@@ -1,0 +1,46 @@
+body {
+    overflow: hidden;
+}
+
+.message {
+    visibility: hidden;
+    transition: visibility var(--animation-duration, 0.3s) ease-in-out, transform 0.5s ease-in-out;
+}
+
+.animate_animated {
+    visibility: visible;
+    animation-name: moveAnimation;
+    animation-duration: var(--animation-duration, 1s);
+    animation-fill-mode: forwards;
+}
+
+.animate_fadeInLeftBig {
+    animation-name: fadeOutAnimation;
+    animation-duration: var(--fade-duration, 0.5s);
+    animation-delay: var(--fade-delay, 1s);
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveAnimation {
+
+    /* Добавьте ключевые кадры для движения */
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+@keyframes fadeOutAnimation {
+
+    /* Добавьте ключевые кадры для исчезновения */
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
