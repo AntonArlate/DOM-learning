@@ -1,0 +1,200 @@
+<!--
+     
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не стирать, код с решением задачи пишем под комментарием.
+
+<script>
+  "use strict";
+
+1. При изменении значения в input с id="from", значение содержащееся в нем должно моментально отображаться в span. То есть при печати в input'е тег span также должен меняться.
+
+2. При клике на кнопку с классом messageBtn необходимо элементу с классом message:
+- добавить два класса: animate_animated и animate_fadeInLeftBig
+- поставить данному элементу стиль visibility в значение 'visible'.
+
+3. Необходимо при отправке формы проверить, заполнены ли все поля в этой форме. Если какое-либо поле не заполнено, форма не должна отправляться, также должны быть подсвечены незаполненные поля (необходимо поставить класс error незаполненным полям). Как только пользователь начинает заполнять какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
+- Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
+- Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- стили для тестирования -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error {
+            background-color: bisque;
+        }
+
+        .message {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Исходный HTML -->
+    <input id="from" type="text">
+    В инпуте написано: <span></span>
+
+    <br>
+
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">
+        Привет :)
+    </div>
+
+    <br>
+
+    <form>
+        <label>
+            Первый инпут:
+            <input class="form-control" type="text">
+        </label>
+        <br>
+        <br>
+        <label>
+            Второй инпут:
+            <select class="form-control">
+                <option value=""></option>
+                <option value="1">Один</option>
+                <option value="2">Два</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <button>Отправить</button>
+    </form>
+
+    <script>
+        //        1. При изменении значения в input с id="from", значение содержащееся в нем должно моментально отображаться в span. То есть при печати в input'е тег span также должен меняться.
+        const input = document.querySelector(`#from`);
+        const output = document.querySelector(`span`);
+
+        input.addEventListener(`input`, function () {
+            output.textContent = input.value;
+        });
+
+        // 2. При клике на кнопку с классом messageBtn необходимо элементу с классом message:
+        // - добавить два класса: animate_animated и animate_fadeInLeftBig
+        // - поставить данному элементу стиль visibility в значение 'visible'.
+
+        /* базовое решение
+        const messageBtn = document.querySelector(`.messageBtn`);
+        const message = document.querySelector(`.message`);
+
+        messageBtn.addEventListener(`click`, function () {
+            message.classList.add(`animate_animated`, `animate_fadeInLeftBig`);
+            message.style.visibility = `visible`;
+        });
+        */
+
+        /* попытка реализовать две посследовательные анимации
+        */
+        const messageBtn = document.querySelector(`.messageBtn`);
+        const message = document.querySelector('.message');
+        // берём из данных html либо подставляем по умолчанию
+        const animationDuration = message.dataset.animationDuration || 2000;
+        const fadeDelay = message.dataset.fadeDelay || 1000;
+        const fadeDuration = message.dataset.fadeDuration || 5000;
+
+        messageBtn.addEventListener(`click`, function () {
+            function applyAnimations() {
+                // Устанавливаем длительность анимации первого класса
+                message.style.setProperty('--animation-duration', `${animationDuration}ms`); // передаём переменную в CSS. Это обязует быть полученную переменную в ms.
+                message.style.visibility = 'visible'; //<<< task set "visibility"
+                message.classList.add('animate_animated'); //<<< task first class add "animate_animated"
+
+                // Слушаем событие окончания первой анимации
+                message.addEventListener('animationend', () => {
+                    // Добавляем второй класс с задержкой
+                    setTimeout(() => {
+                        message.style.setProperty('--fade-duration', `${fadeDuration}ms`);
+                        message.classList.add('animate_fadeInLeftBig'); //<<< task secon class add "animate_fadeInLeftBig"
+                    }, fadeDelay);
+                }, { once: true }); // Позволяет событию сработать только один раз
+            }
+
+            applyAnimations();
+        });
+
+
+        // 3. Необходимо при отправке формы проверить, заполнены ли все поля в этой форме. Если какое-либо поле не заполнено, форма не должна отправляться, также должны быть подсвечены незаполненные поля (необходимо поставить класс error незаполненным полям). Как только пользователь начинает заполнять какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
+        // - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
+        // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+
+        // Получаем элементы формы
+        const form = document.querySelector('form');
+        const inputs = form.querySelectorAll('input, select');
+
+        // Функция для проверки заполненности поля
+        function validateField(field) {
+            // Проверяем, является ли поле пустым
+            const isEmpty = field.value.trim() === '';
+
+            // Если поле пустое, добавляем класс error
+            if (isEmpty) {
+                field.classList.add('error');
+            } else {
+                // Если поле не пустое, удаляем класс error
+                field.classList.remove('error');
+            }
+        }
+
+        // Функция для проверки заполненности всех полей формы
+        function validateForm() {
+            let isValid = true;
+
+            // Проверяем каждое поле на заполненность
+            inputs.forEach(function (field) {
+                validateField(field);
+
+                // Если поле пустое, устанавливаем значение isValid в false
+                if (field.value.trim() === '') {
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        // Обработчик события отправки формы
+        form.addEventListener('submit', function (event) {
+            // Проверяем заполненность формы перед отправкой
+            if (!validateForm()) {
+                // Если не все поля заполнены, отменяем отправку формы
+                event.preventDefault();
+            }
+        });
+
+        /* без делегирования вешаем обработчик на каждый элемент
+        // Обработчик события изменения поля
+        inputs.forEach(function (field) {
+            field.addEventListener('input', function () {
+                // Проверяем поле при вводе
+                validateField(field);
+            });
+        });
+        */
+
+        /* с делегированием 
+        */
+        // Обработчик события изменения поля
+        form.addEventListener('input', function (event) {
+            const target = event.target;
+            // Проверяем поле при вводе по тегам
+            if (target.matches('input, select')) {
+                validateField(target);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
