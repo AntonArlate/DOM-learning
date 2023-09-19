@@ -90,14 +90,29 @@
 
             margin-bottom: 32px;
 
-            h1 {
+
+            // h1 {
+            //     font-size: 24px;
+            //     font-style: bold;
+            //     font-weight: 700;
+            //     line-height: 167.2%;
+            // }
+
+            // h2 {
+            //     font-size: 18px;
+            //     font-style: normal;
+            //     font-weight: normal;
+            //     line-height: 167.2%;
+            // }
+
+            &__title {
                 font-size: 24px;
                 font-style: bold;
                 font-weight: 700;
                 line-height: 167.2%;
             }
 
-            h2 {
+            &__desc {
                 font-size: 18px;
                 font-style: normal;
                 font-weight: normal;
