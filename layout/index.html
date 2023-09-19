@@ -90,8 +90,8 @@
             <div class="promo_info">
                 <div class="line_info"></div>
                 <div class="info_content">
-                    <h1>THE BRAND</h1>
-                    <h2>OF LUXERIOUS FASHION</h2>
+                    <h2 class="info_content__big">THE BRAND</h2>
+                    <p class="info_content__small">OF LUXERIOUS FASHION</p>
                 </div>
             </div>
         </div>
@@ -143,29 +143,44 @@
         </div>
 
         <div class="products_cards-grid">
-
-            <div class="products_cards-grid_card">
+            <div class="products_cards-grid_card hidden">
                 <div class="product_cards_bg"></div>
                 <div class="card_img_container">
-                    <img src="./img/cards1.png" alt="" class="card_img">
+                    <img src="" alt="" class="card_img">
                     <div class="card_hover">
                         <div class="card_hover_add_to_cart">
-                            <div class="card_add_ico">
-                                <!-- тут была svg -->
-                            </div>
                             <p class="card_add_text">Add to Cart</p>
                         </div>
                     </div>
                 </div>
                 <div class="card_content">
-                    <h2 class="card_title">ELLERY X M'O CAPSULE</h2>
-                    <p class="card_text">Known for her sculptural takes on traditional tailoring, Australian arbiter
-                        of
-                        cool Kym Ellery teams up with Moda Operandi.</p>
-                    <h2 class="card_price">$52.00</h2>
+                    <h2 class="card_title"></h2>
+                    <p class="card_text"></p>
+                    <h2 class="card_price"></h2>
                 </div>
             </div>
+            <!-- 
+            <script type="text/template" id="card_template">
+                <div class="products_cards-grid_card">
+                <div class="product_cards_bg"></div>
+                <div class="card_img_container">
+                    <img src="" alt="" class="card_img">
+                    <div class="card_hover">
+                        <div class="card_hover_add_to_cart">
+                            <p class="card_add_text">Add to Cart</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_content">
+                    <h2 class="card_title"></h2>
+                    <p class="card_text"></p>
+                    <h2 class="card_price"></h2>
+                </div>
+            </div>
+            </script> 
+        -->
 
+            <script src="./card generator.js"></script>
 
         </div>
         <div class="products_rectangle_button">
@@ -183,7 +198,7 @@
                         fill="#F16D7F" />
                 </svg>
             </div>
-            <h1 class="feature_info_title">Sales & discounts</h1>
+            <h2 class="feature_info_title">Sales & discounts</h2>
             <p class="feature_info_text">Worldwide delivery on all. Authorit tively morph next-generation innov tion
                 with
                 extensive models.</p>
@@ -196,7 +211,7 @@
                         fill="#F16D7F" />
                 </svg>
             </div>
-            <h1 class="feature_info_title">Free Delivery</h1>
+            <h2 class="feature_info_title">Free Delivery</h2>
             <p class="feature_info_text">Worldwide delivery on all. Authorit tively morph next-generation innov tion
                 with
                 extensive models.</p>
@@ -209,7 +224,7 @@
                         fill="#F16D7F" />
                 </svg>
             </div>
-            <h1 class="feature_info_title">Quality assurance</h1>
+            <h2 class="feature_info_title">Quality assurance</h2>
             <p class="feature_info_text">Worldwide delivery on all. Authorit tively morph next-generation innov tion
                 with
                 extensive models.</p>
@@ -232,8 +247,8 @@
         </article>
         <article class="subscribe_form">
             <div class="subscribe_form_text">
-                <h1>SUBSCRIBE</h1>
-                <h2>FOR OUR NEWLETTER AND PROMOTION</h2>
+                <h2 class="subscribe_form_text__title">SUBSCRIBE</h2>
+                <h2 class="subscribe_form_text__desc">FOR OUR NEWLETTER AND PROMOTION</h2>
             </div>
             <form class="subscribe_form_field">
                 <input type="email" id="email-input" name="email" placeholder="Enter Your Email" required><!--
