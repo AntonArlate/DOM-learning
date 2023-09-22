@@ -14,6 +14,10 @@
     border: 1px solid #00af26;
 }
 
+.hidden {
+    display: none;
+}
+
 @import "./styles/default.scss";
 
 @import "./styles/center.scss";
