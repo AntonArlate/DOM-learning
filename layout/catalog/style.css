@@ -693,13 +693,13 @@ html {
   text-align: center;
   margin-bottom: 32px;
 }
-.subscribe_form_text h1 {
+.subscribe_form_text__title {
   font-size: 24px;
   font-style: bold;
   font-weight: 700;
   line-height: 167.2%;
 }
-.subscribe_form_text h2 {
+.subscribe_form_text__desc {
   font-size: 18px;
   font-style: normal;
   font-weight: normal;

@@ -9,7 +9,7 @@ async function fetchData() {
         console.log(data);
         const productBox = document.querySelector(".products_cards-grid");
 
-        data.forEach(({ name, description, price, img }) => {
+        data.forEach(({ IDproduct, name, description, price, img }) => {
 
             // Находим элемент шаблона, который нужно скопировать
             const template = document.querySelector('.products_cards-grid_card');
@@ -18,6 +18,7 @@ async function fetchData() {
             // Удаляем класс, отвечающий за скрытие элемента
             copy.classList.remove('hidden');
             // Добавляем свои данные в скопированный элемент
+            copy.querySelector('.product-id').textContent = IDproduct;
             copy.querySelector('.card_img').src = img;
             copy.querySelector('.card_img').alt = img;
             copy.querySelector('.card_title').textContent = name;
