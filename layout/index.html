@@ -72,7 +72,12 @@
 
             </section>
             <img src="./img/profile_ico.svg" alt="profile" class="profile">
-            <img src="./img/shopping_cart_ico.svg" alt="shopping_cart" class="shopping_cart">
+            <div class="shopping-cart">
+                <img src="./img/shopping_cart_ico.svg" alt="shopping_cart" class="shopping-cart__ico">
+                <div class="cart-counter hidden">
+                    <span class="cart-counter__number">0</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -144,11 +149,15 @@
 
         <div class="products_cards-grid">
             <div class="products_cards-grid_card hidden">
+                <span class="product-id hidden">0</span>
                 <div class="product_cards_bg"></div>
                 <div class="card_img_container">
                     <img src="" alt="" class="card_img">
                     <div class="card_hover">
                         <div class="card_hover_add_to_cart">
+                            <svg class="card_add_ico">
+                                <image href="./img/cart_add_ico.svg" />
+                            </svg>
                             <p class="card_add_text">Add to Cart</p>
                         </div>
                     </div>
@@ -229,6 +238,35 @@
                 with
                 extensive models.</p>
         </article>
+    </section>
+
+    <!-- CART ITEMS -->
+    <section class="cart-items center">
+        <h2 class="cat-items__title">Cart Items</h2>
+        <div class="cart-items__box">
+            <div class="cart-card hidden">
+                <span class="product-id hidden">0</span>
+                <div class="img-container"><img src="./img/cart-photo1.png" alt="product photo" class="product-photo">
+                </div>
+                <div class="product_description">
+                    <h2 class="product_name">MANGO PEOPLE T&#8288;-&#8288;SHIRT</h2>
+                    <div class="product_specification">
+                        <p class="parameter-name">Price: <span class="price-assigned">$300</span></p>
+                        <p class="parameter-name">Color: <span class="value color">Red</span></p>
+                        <p class="parameter-name">Size: <span class="value size">XL</span></p>
+                        <p class="parameter-name">Quantity:<span class="value"><input class="quantity-field"
+                                    type="number" name="number-input" min="1"></span></p>
+                    </div>
+                </div>
+                <div class="close-cart">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <image href="./img/close-cross.svg" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <script src="./cart-controller.js"></script>
     </section>
 
     <!-- SUBSCRIBE -->

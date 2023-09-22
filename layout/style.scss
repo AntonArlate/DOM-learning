@@ -15,7 +15,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 @import "./styles/default.scss";
@@ -23,6 +23,28 @@
 @import "./styles/center.scss";
 
 @import "./styles/header.scss";
+
+.shopping-cart {
+
+    position: relative;
+    display: inline-block;
+
+    .cart-counter {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 19px;
+        height: 19px;
+        background-color: #F16D7F;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
 
 .promo {
     background: #F1E4E6;
@@ -207,6 +229,7 @@
                     justify-content: center;
 
                     &_add_to_cart {
+                        cursor: pointer;
                         display: flex;
                         width: 139px;
                         height: 44px;
@@ -299,6 +322,102 @@
 }
 
 @import "./styles/feature.scss";
+
+.cart-items {
+
+    text-align: center;
+
+    &__title {}
+
+    &__box {
+
+        .cart-card {
+            text-align: start;
+            height: 306px;
+            width: 652px;
+            display: flex;
+            box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
+            position: relative;
+
+            .img-container {
+                width: 262px;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: 100%;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+
+            .product_description {
+                width: 390px;
+                padding-top: 22px;
+                padding-left: 31px;
+                display: flex;
+                flex-direction: column;
+                gap: 42px;
+
+                .product_name {
+                    max-width: 262px;
+                    color: #222;
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+
+                .product_specification {
+                    font-size: 22px;
+                    font-weight: 400;
+
+                    .parameter-name {
+                        color: #575757;
+                    }
+
+                    .price-assigned {
+                        color: #EF5B70;
+                    }
+
+                    .value {
+                        color: #6F6E6E;
+
+                    }
+
+                    .quantity-field {
+
+                        margin-left: 24px;
+                        width: 44px;
+                        height: 25px;
+                        text-align: center;
+                        color: #656565;
+                        font-size: 18px;
+                        font-weight: 400;
+
+                        border: 1px solid #EAEAEA;
+
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                        }
+
+                        // не удалось изменить свойстви рамки. Да и в макете нет её параметров
+                    }
+                }
+            }
+
+            .close-cart {
+                position: absolute;
+                top: 28px;
+                right: 22px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
 
 @import "./styles/subscribe.scss";
 
